@@ -24,23 +24,51 @@ export default function MainPage(props) {
   };
 
   return (
-    <Navbar bg="dark" variant="dark">
-      <Container>
-        <Navbar.Brand href="#home">
-          <img src={Logo} height={50} alt="world-bank-logo" />
-        </Navbar.Brand>
-        <div>
+    <Container className="py-4">
+      <header className="border-bottom pb-3 mb-4">
+        <Navbar>
+          <Container>
+            <Navbar.Brand href="#home">
+              <img src={Logo} height={50} alt="world-bank-logo" />
+            </Navbar.Brand>
+            <div></div>
+          </Container>
+          <SignUpModal show={showSignUp} handleClose={handleCloseSignUp} />
+          <LogInModal show={showLogIn} handleClose={handleCloseLogIn} />
+          {/* {signUpModal()} */}
+        </Navbar>
+      </header>
+      <div className="p-5 mb-4 bg-light rounded-3">
+        <Container className="py-5">
+          <h1 className="display-5 fw-bold">Delta Stats Interface</h1>
+          <p className="col-md-8 fs-4">
+            Using a series of tools, this interface has been created to
+            visulaise the data from The World Bank database. Log in or sign up
+            to gain access.
+          </p>
           <Button variant="primary" onClick={handleShowSignUp}>
             Sign Up
           </Button>{" "}
           <Button variant="primary" onClick={handleShowLogIn}>
             Log In
           </Button>
-        </div>
-      </Container>
-      <SignUpModal show={showSignUp} handleClose={handleCloseSignUp} />
-      <LogInModal show={showLogIn} handleClose={handleCloseLogIn} />
-      {/* {signUpModal()} */}
-    </Navbar>
+        </Container>
+      </div>
+      <div className="container">
+        <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+          <p className="col-md-4 mb-0 text-muted">© 2022 Team Delta</p>
+          <div className="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <img
+              className="bi me-2"
+              height="32"
+              src={Logo}
+              alt="world-bank-logo"
+            >
+              {/* <use xlink:href="#bootstrap"></use> */}
+            </img>
+          </div>
+        </footer>
+      </div>
+    </Container>
   );
 }
