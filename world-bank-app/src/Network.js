@@ -1,4 +1,4 @@
-class Networking {
+export default class Networking {
   async getCountries() {
     const response = await fetch("http://localhost:8080/countries");
     return await response.json();
