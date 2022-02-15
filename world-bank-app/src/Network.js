@@ -1,6 +1,4 @@
-import React from "react";
-
-export default class Networking extends React.Component {
+class Networking {
   async getCountries() {
     const response = await fetch("http://localhost:8080/countries");
     return await response.json();
