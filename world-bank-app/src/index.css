@@ -11,9 +11,11 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
 }
-/* .custom-year-range-picker-container {
-	color: "black";
-} */
+
+.custom-year-range-picker {
+	border: 0 !important;
+	color: black;
+}
 .custom-year-range-picker .yrp-picker-box {
 	height: 40px;
 	width: 200px;
@@ -52,5 +54,6 @@ code {
 }
 
 .year-range-container {
-	text-align: center;
+	width: 200px;
+	height: 40px;
 }

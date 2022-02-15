@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Form, Button, Col, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { Form, Button } from "react-bootstrap";
 import { YearRangePicker } from "react-year-range-picker";
 
 export default function Search() {
@@ -63,25 +63,14 @@ export default function Search() {
 				</Form.Select>
 			</div>
 
-			<div
-				className="year-range-container"
-				style={{
-					color: "black",
-					width: 150,
-				}}
-			>
-				<Form.Label
-					style={{
-						color: "white",
-					}}
-				>
+			<div className="year-range-container">
+				<Form.Label style={{ color: "white" }}>
 					Year Range
 				</Form.Label>
-				{/* <label htmlFor="year-range">Here</label> */}
 				<YearRangePicker
 					id="year-range"
 					minYear="1960"
-					maxYear={new Date().getFullYear()}
+					maxYear="2015"
 					onSelect={(startYear, endYear) => {
 						setYearRange({
 							startYear,
@@ -90,11 +79,6 @@ export default function Search() {
 					}}
 					startYear={yearRange?.startYear}
 					endYear={yearRange?.endYear}
-					style={{
-						// maxWidth: "200px",
-						// width: "100%",
-						border: 0,
-					}}
 					classNames="bar-item custom-year-range-picker"
 					selectedColor="#0963b5"
 				/>
