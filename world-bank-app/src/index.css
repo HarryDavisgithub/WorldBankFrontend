@@ -15,10 +15,12 @@ code {
 	color: "black";
 } */
 .custom-year-range-picker .yrp-picker-box {
-	height: 37px;
+	height: 40px;
+	width: 200px;
 	border-radius: 5px;
 	background-color: white;
 	color: black;
+	position: absolute;
 }
 
 .custom-year-range-picker .yrp-picker-box span {
@@ -29,4 +31,18 @@ code {
 
 .custom-year-range-picker .yrp-picker-box i {
 	border-color: gray;
+}
+
+.selection-bar {
+	padding-left: 10%;
+	padding-right: 10%;
+	height: 40px;
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.bar-item {
+	width: 150px;
+	height: 40px;
 }
