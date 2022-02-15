@@ -35,7 +35,6 @@ export default function MainPage(props) {
           </Container>
           <SignUpModal show={showSignUp} handleClose={handleCloseSignUp} />
           <LogInModal show={showLogIn} handleClose={handleCloseLogIn} />
-          {/* {signUpModal()} */}
         </Navbar>
       </header>
       <div className="p-5 mb-4 bg-light rounded-3">
