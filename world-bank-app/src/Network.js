@@ -25,7 +25,7 @@ export default class Networking extends React.Component {
     return await response.json();
   }
 
-  async getCountryIndicatorInfo(country, indicator, year) {
+  async getCountryIndicatorYearInfo(country, indicator, year) {
     const response = await fetch(
       `http://localhost:8080/countries/${country}/${indicator}/${year}/info`
     );
