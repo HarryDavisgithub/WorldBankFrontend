@@ -10,17 +10,12 @@ export default function MainPage(props) {
   const [showSignUp, setShowSignUp] = useState(false);
   const [showLogIn, setShowLogIn] = useState(false);
 
-  const handleCloseSignUp = () => {
-    setShowSignUp(false);
-  };
   const handleShowSignUp = () => {
-    setShowSignUp(true);
+    setShowSignUp(!showSignUp);
   };
-  const handleCloseLogIn = () => {
-    setShowLogIn(false);
-  };
+
   const handleShowLogIn = () => {
-    setShowLogIn(true);
+    setShowLogIn(!showLogIn);
   };
 
   return (
@@ -33,8 +28,8 @@ export default function MainPage(props) {
             </Navbar.Brand>
             <div></div>
           </Container>
-          <SignUpModal show={showSignUp} handleClose={handleCloseSignUp} />
-          <LogInModal show={showLogIn} handleClose={handleCloseLogIn} />
+          <SignUpModal show={showSignUp} handleClose={handleShowSignUp} />
+          <LogInModal show={showLogIn} handleClose={handleShowLogIn} />
         </Navbar>
       </header>
       <div className="p-5 mb-4 bg-light rounded-3">
