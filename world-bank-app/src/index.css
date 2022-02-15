@@ -36,7 +36,7 @@ code {
 .selection-bar {
 	padding-left: 10%;
 	padding-right: 10%;
-	height: 40px;
+	height: 85px;
 	width: 100%;
 	display: flex;
 	justify-content: space-evenly;
@@ -45,4 +45,12 @@ code {
 .bar-item {
 	width: 150px;
 	height: 40px;
+}
+
+.search-button {
+	align-self: flex-end;
+}
+
+.year-range-container {
+	text-align: center;
 }

@@ -41,7 +41,7 @@ export default function Search() {
 	return (
 		<div className="selection-bar">
 			<div>
-				{/* <Form.Label>Select a country</Form.Label> */}
+				<Form.Label>Select a country</Form.Label>
 				<Form.Select
 					className="bar-item"
 					aria-label="Country-list"
@@ -52,7 +52,7 @@ export default function Search() {
 				</Form.Select>
 			</div>
 			<div>
-				{/* <Form.Label>Select a indicator</Form.Label> */}
+				<Form.Label>Select a indicator</Form.Label>
 				<Form.Select
 					className="bar-item"
 					aria-label="Indicator-list"
@@ -64,11 +64,22 @@ export default function Search() {
 			</div>
 
 			<div
+				className="year-range-container"
 				style={{
 					color: "black",
+					width: 150,
 				}}
 			>
+				<Form.Label
+					style={{
+						color: "white",
+					}}
+				>
+					Year Range
+				</Form.Label>
+				{/* <label htmlFor="year-range">Here</label> */}
 				<YearRangePicker
+					id="year-range"
 					minYear="1960"
 					maxYear={new Date().getFullYear()}
 					onSelect={(startYear, endYear) => {
@@ -93,7 +104,7 @@ export default function Search() {
 				variant="primary"
 				type="submit"
 				onClick={printInfo}
-				className="bar-item"
+				className="bar-item search-button"
 			>
 				Submit
 			</Button>
