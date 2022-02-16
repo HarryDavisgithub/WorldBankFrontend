@@ -6,6 +6,8 @@ import Form from "react-bootstrap/Form";
 export default function LogInModal(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -13,6 +15,19 @@ export default function LogInModal(props) {
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+  };
+
+  const handleLogin = async () => {
+    try {
+      let response = await props.postLogin(email, password);
+      let json = await response.json();
+      if (!json.success) {
+        throw new Error("Invalid email or password");
+      } //something to do with keeping user logged in goes here
+    } catch (error) {
+      setSuccess(false);
+      setError(error.toString());
+    }
   };
 
   return (
@@ -43,10 +58,15 @@ export default function LogInModal(props) {
         </Form>
       </Modal.Body>
       <Modal.Footer>
+        {error ? (
+          <div className="alert alert-danger" role="alert">
+            {error}.
+          </div>
+        ) : null}
         <Button variant="secondary" onClick={props.handleClose}>
           Close
         </Button>
-        <Button variant="primary" onClick={props.handleClose}>
+        <Button variant="primary" onClick={handleLogin}>
           Log In
         </Button>
       </Modal.Footer>

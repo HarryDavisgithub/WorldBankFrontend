@@ -9,6 +9,8 @@ export default function SignUpModal(props) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [disableButton, setDisableButton] = useState(true);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -40,8 +42,23 @@ export default function SignUpModal(props) {
     checkInputs();
   });
 
-  const handleSubmit = () => {
-    //function for posting registration details to backend goes here
+  const handleSubmit = async () => {
+    try {
+      let response = await props.postSignup(email, password);
+      let json = await response.json();
+      if (response.status === 400) {
+        throw new Error(json.error);
+      } else {
+        setSuccess(true);
+        setError("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+      }
+    } catch (error) {
+      setSuccess(false);
+      setError(error.toString());
+    }
   };
 
   return (
@@ -86,15 +103,25 @@ export default function SignUpModal(props) {
         </Form>
       </Modal.Body>
       <Modal.Footer>
+        {error ? (
+          <div className="alert alert-danger" role="alert">
+            {error}.
+          </div>
+        ) : null}
+        {success ? (
+          <div className="alert alert-success" role="alert">
+            Account created successfully
+          </div>
+        ) : null}
         <Button variant="secondary" onClick={props.handleClose}>
           Close
         </Button>
         <Button
           variant="primary"
-          onClick={props.handleClose}
+          onClick={handleSubmit}
           disabled={disableButton}
         >
-          Create account
+          Sign up
         </Button>
       </Modal.Footer>
     </Modal>
