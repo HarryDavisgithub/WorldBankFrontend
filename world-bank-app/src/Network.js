@@ -29,4 +29,27 @@ export default class Networking {
     );
     return await response.json();
   }
+
+  postSignup = async (email, password) => {
+    let response = await fetch(`http://localhost:8080/users`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: email, password: password }),
+    });
+    return response;
+  };
+
+  postLogin = async (email, password) => {
+    let response = await fetch(`http://localhost:8080/sessions`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: email, password: password }),
+    });
+    return response;
+  };
 }
