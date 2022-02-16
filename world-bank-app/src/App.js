@@ -1,15 +1,15 @@
 import "./App.css";
-import Search from "./components/Search";
+import MainPage from "./components/MainPage";
 import "bootstrap/dist/css/bootstrap.min.css";
+import OneCountryOneIndicator from "./components/OneCountryOneIndicator";
 
 function App() {
-	return (
-		<div className="App">
-			<header className="App-header">
-				<Search />
-			</header>
-		</div>
-	);
+  return (
+    <OneCountryOneIndicator
+      country={"Albania"}
+      indicator={"Access to electricity (% of population)"}
+    />
+  );
 }
 
 export default App;
