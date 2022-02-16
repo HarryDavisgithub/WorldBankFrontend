@@ -28,9 +28,9 @@ export default function Search(props) {
 		for (let i = 2015; i >= 1960; i--) {
 			key++;
 			arr.push(
-				<option key={key} value={i}>
-					{i}
-				</option>
+				<Select.Option key={key} value={i.toString()}>
+					{i.toString()}
+				</Select.Option>
 			);
 		}
 		return arr;
@@ -38,9 +38,9 @@ export default function Search(props) {
 
 	function createIndicatorList() {
 		return indicators.map((indicator, key) => (
-			<option key={key} value={indicator}>
+			<Select.Option key={key} value={indicator}>
 				{indicator}
-			</option>
+			</Select.Option>
 		));
 	}
 
@@ -63,6 +63,7 @@ export default function Search(props) {
 						<Form.Label>Select a country</Form.Label>
 						<Select
 							className="bar-item"
+							dropdownStyle={{ minWidth: "20%" }}
 							mode="multiple"
 							placeholder="Please select up to two countries"
 							onChange={handleCountriesChange}
@@ -85,7 +86,20 @@ export default function Search(props) {
 					</div>
 					<div>
 						<Form.Label>Select a indicator</Form.Label>
-						<Form.Select
+						<Select
+							showSearch
+							dropdownStyle={{ minWidth: "50%" }}
+							// style={{ minWidth: "50%" }}
+							placeholder="Select a indicator"
+							optionFilterProp="children"
+							onChange={(e) => setSelectedIndicator(e.target.value)}
+							filterOption={(input, option) =>
+								option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+							}
+						>
+							{createIndicatorList()}
+						</Select>
+						{/* <Form.Select
 							className="bar-item"
 							aria-label="Indicator-list"
 							onChange={(e) => setSelectedIndicator(e.target.value)}
@@ -93,11 +107,11 @@ export default function Search(props) {
 						>
 							<option value="All">All</option>
 							{createIndicatorList()}
-						</Form.Select>
+						</Form.Select> */}
 					</div>
 					<div>
 						<Form.Label>Select a year</Form.Label>
-						<Form.Select
+						{/* <Form.Select
 							className="bar-item"
 							aria-label="Year-list"
 							onChange={(e) => setSelectedYear(e.target.value)}
@@ -105,7 +119,18 @@ export default function Search(props) {
 						>
 							<option value="All">All</option>
 							{createYearsList()}
-						</Form.Select>
+						</Form.Select> */}
+						<Select
+							showSearch
+							placeholder="Select a year"
+							optionFilterProp="children"
+							onChange={(e) => setSelectedYear(e.target.value)}
+							filterOption={(input, option) =>
+								option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+							}
+						>
+							{createYearsList()}
+						</Select>
 					</div>
 
 					<Button
