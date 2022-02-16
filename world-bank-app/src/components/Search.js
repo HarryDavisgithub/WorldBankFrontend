@@ -34,7 +34,9 @@ export default function Search(props) {
 
 	function returnSelection(e) {
 		e.preventDefault();
-		console.log(selectedIndicator);
+		props.getSelectedCountries(selectedCountries);
+		props.getSelectedIndicators(selectedIndicator);
+		props.getSelectedYear(yearRange.startYear);
 	}
 
 	function handleCountriesChange(country) {
@@ -50,7 +52,6 @@ export default function Search(props) {
 						<Select
 							className="bar-item"
 							mode="multiple"
-							style={{ width: "100%" }}
 							placeholder="Please select up to two countries"
 							onChange={handleCountriesChange}
 						>
