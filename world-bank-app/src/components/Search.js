@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
-import { YearRangePicker } from "react-year-range-picker";
 import Network from "../Network.js";
 
 import "antd/dist/antd.css";
-
 import { Select } from "antd";
 
 export default function Search(props) {
@@ -13,7 +11,7 @@ export default function Search(props) {
 	const [indicators, setIndicators] = useState();
 	const [selectedCountries, setSelectedCountries] = useState([]);
 	const [selectedIndicator, setSelectedIndicator] = useState("All");
-	const [yearRange, setYearRange] = useState();
+	const [selectedYear, setSelectedYear] = useState("All");
 
 	const { Option } = Select;
 
@@ -23,6 +21,20 @@ export default function Search(props) {
 			setIndicators(await network.getIndicators());
 		})();
 	}, []);
+
+	function createYearsList() {
+		let key = 0;
+		let arr = [];
+		for (let i = 2015; i >= 1960; i--) {
+			key++;
+			arr.push(
+				<option key={key} value={i}>
+					{i}
+				</option>
+			);
+		}
+		return arr;
+	}
 
 	function createIndicatorList() {
 		return indicators.map((indicator, key) => (
@@ -36,7 +48,7 @@ export default function Search(props) {
 		e.preventDefault();
 		props.getSelectedCountries(selectedCountries);
 		props.getSelectedIndicators(selectedIndicator);
-		props.getSelectedYear(yearRange.startYear);
+		props.getSelectedYear(selectedYear);
 	}
 
 	function handleCountriesChange(country) {
@@ -83,24 +95,17 @@ export default function Search(props) {
 							{createIndicatorList()}
 						</Form.Select>
 					</div>
-
-					<div className="year-range-container">
-						<Form.Label style={{ color: "white" }}>Year Range</Form.Label>
-						<YearRangePicker
-							id="year-range"
-							minYear="1960"
-							maxYear="2015"
-							onSelect={(startYear, endYear) => {
-								setYearRange({
-									startYear,
-									endYear,
-								});
-							}}
-							startYear={yearRange?.startYear}
-							endYear={yearRange?.endYear}
-							classNames="bar-item custom-year-range-picker"
-							selectedColor="#0963b5"
-						/>
+					<div>
+						<Form.Label>Select a year</Form.Label>
+						<Form.Select
+							className="bar-item"
+							aria-label="Year-list"
+							onChange={(e) => setSelectedYear(e.target.value)}
+							style={{ width: 200 }}
+						>
+							<option value="All">All</option>
+							{createYearsList()}
+						</Form.Select>
 					</div>
 
 					<Button
