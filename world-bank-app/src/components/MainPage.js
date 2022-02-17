@@ -5,6 +5,9 @@ import Button from "react-bootstrap/Button";
 import SignUpModal from "./SignUpModal";
 import LogInModal from "./LogInModal";
 import Logo from "../assets/bank-logo.png";
+import Networking from "../Network";
+
+const Network = new Networking();
 
 export default function MainPage(props) {
   const [showSignUp, setShowSignUp] = useState(false);
@@ -28,8 +31,17 @@ export default function MainPage(props) {
             </Navbar.Brand>
             <div></div>
           </Container>
-          <SignUpModal show={showSignUp} handleClose={handleShowSignUp} />
-          <LogInModal show={showLogIn} handleClose={handleShowLogIn} />
+          <SignUpModal
+            show={showSignUp}
+            handleClose={handleShowSignUp}
+            postSignup={Network.postSignup}
+          />
+          <LogInModal
+            show={showLogIn}
+            handleClose={handleShowLogIn}
+            postLogin={Network.postLogin}
+            setIsLoggedIn={props.setIsLoggedIn}
+          />
         </Navbar>
       </header>
       <div className="p-5 mb-4 bg-light rounded-3">
