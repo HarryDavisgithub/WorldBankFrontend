@@ -6,7 +6,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
 } from "recharts";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
@@ -63,12 +62,12 @@ export default function OneCountryOneIndicator(props) {
           </Button>
         </Navbar>
       </header>
-      <div className="p-5 mb-4 bg-light rounded-3">
+      <div className="mb-4 bg-light rounded-3">
         <Container className="py-5">
           <h2>{props.country}</h2>
           <h4>{props.indicator}</h4>
           <LineChart
-            width={1100}
+            width={1150}
             height={400}
             data={data}
             margin={{
@@ -82,7 +81,6 @@ export default function OneCountryOneIndicator(props) {
             <XAxis dataKey="year" />
             <YAxis />
             <Tooltip />
-            <Legend />
             <Line
               type="monotone"
               dataKey="value"
