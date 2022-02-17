@@ -54,7 +54,7 @@ export default function OneCountryOneIndicator(props) {
 			<header className="border-bottom pb-3 mb-4">
 				<Navbar>
 					<Container>
-						<Navbar.Brand href="#home">
+						<Navbar.Brand href="/">
 							<img src={Logo} height={50} alt="world-bank-logo" />{" "}
 							<Button variant="primary">Search</Button>{" "}
 							<Button variant="primary">History</Button>
