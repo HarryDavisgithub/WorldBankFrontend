@@ -6,24 +6,28 @@ import { useCookies } from "react-cookie";
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import OneCountryOneIndicator from "./components/OneCountryOneIndicator";
+import OneCountryOneIndicatorOneYear from "./components/OneCountryOneIndicatorOneYear";
+import TwoCountriesOneIndicator from "./components/TwoCountriesOneIndicator";
 import PageSelector from "./components/PageSelector";
 
+
 function App() {
-	const [cookies, setCookie] = useCookies(["sessionId"]);
-	const [isLoggedIn, setIsLoggedIn] = useState(cookies.sessionId);
+  const [cookies, setCookie] = useCookies(["sessionId"]);
+  const [isLoggedIn, setIsLoggedIn] = useState(cookies.sessionId);
 
-	const [selectedCountries, setSelectedCountries] = useState();
-	const [selectedIndicator, setSelectedIndicator] = useState();
-	const [selectedYear, setSelectedYear] = useState();
+  const [selectedCountries, setSelectedCountries] = useState();
+  const [selectedIndicator, setSelectedIndicator] = useState();
+  const [selectedYear, setSelectedYear] = useState();
 
-	useEffect(() => {
-		console.log(isLoggedIn);
-	}, [cookies.sessionId, isLoggedIn]);
+  useEffect(() => {
+    console.log(isLoggedIn);
+  }, [cookies.sessionId, isLoggedIn]);
 
-	const deleteCookiesOnLogOut = () => {
-		setCookie("sessionId", "");
-		setIsLoggedIn("");
-	};
+  const deleteCookiesOnLogOut = () => {
+    setCookie("sessionId", "");
+    setIsLoggedIn("");
+  };
+
 
 	function getSelectedCountries(countries) {
 		setSelectedCountries(countries);
