@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import { Routes, Route, Navigate, Link } from "react-router-dom";
 
 import Network from "../Network.js";
 import Logo from "../assets/bank-logo.png";
@@ -50,7 +51,7 @@ export default function Search(props) {
 	}
 
 	function returnSelection(e) {
-		e.preventDefault();
+		// e.preventDefault();
 		props.getSelectedCountries(selectedCountries);
 		props.getSelectedIndicators(selectedIndicator);
 		props.getSelectedYear(selectedYear);
@@ -162,17 +163,21 @@ export default function Search(props) {
 							{getCountrySelect()}
 							{getIndicatorSelect()}
 							{getYearSelect()}
-							<Button
-								variant="primary"
-								type="submit"
-								onClick={returnSelection}
-								className="bar-item search-button"
-							>
-								Submit
-							</Button>
+							<Link to="/page-selection">
+								<Button
+									variant="primary"
+									type="submit"
+									onClick={returnSelection}
+									className="bar-item search-button"
+								>
+									Submit
+								</Button>
+							</Link>
 						</div>
 					) : (
-						<p>Loading...</p>
+						<div className="spinner-border" role="status">
+							<span className="sr-only">Loading...</span>
+						</div>
 					)}
 				</Container>
 			</div>
