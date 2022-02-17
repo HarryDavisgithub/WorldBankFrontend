@@ -16,43 +16,41 @@ import Logo from "../assets/bank-logo.png";
 
 export default function TwoCountriesOneIndicator(props) {
   const network = new Network();
-  const data = [
-    {
-      year: 1960,
-      firstCountry: 2400,
-      secondCountry: 1000,
-    },
-    {
-      year: 1970,
-      firstCountry: 1398,
-      secondCountry: 2400,
-    },
-    {
-      year: 1980,
-      firstCountry: 9800,
-      secondCountry: 5000,
-    },
-    {
-      year: 1990,
-      firstCountry: 3908,
-      secondCountry: 8000,
-    },
-    {
-      year: 2000,
-      firstCountry: 4800,
-      secondCountry: 2400,
-    },
-    {
-      year: 2010,
-      firstCountry: 3800,
-      secondCountry: 4800,
-    },
-    {
-      year: 2020,
-      firstCountry: 4300,
-      secondCountry: 6700,
-    },
-  ];
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    (async () => {
+      setData(
+        await network.getTwoCountriesIndicatorInfo(
+          props.countries[0],
+          props.countries[1],
+          props.indicator
+        )
+      );
+      console.log(
+        await network.getTwoCountriesIndicatorInfo(
+          props.countries[0],
+          props.countries[1],
+          props.indicator
+        )
+      );
+      doSomething();
+    })();
+  }, []);
+
+  function doSomething() {
+    let result = [];
+    for (let i = 0; i < data.length; i++) {
+      if (data[i] !== data[i + 1]) {
+        let obj = {
+          Year: data[i].Year,
+          [data[i].Country]: data[i].Value,
+        };
+        result.push(obj);
+        console.log(result);
+      }
+    }
+  }
 
   return (
     <Container className="py-4">
