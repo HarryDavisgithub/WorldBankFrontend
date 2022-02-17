@@ -14,36 +14,43 @@ import Button from "react-bootstrap/Button";
 import Network from "../Network.js";
 import Logo from "../assets/bank-logo.png";
 
-export default function OneCountryOneIndicator(props) {
+export default function TwoCountriesOneIndicator(props) {
   const network = new Network();
   const data = [
     {
       year: 1960,
-      value: 2400,
+      firstCountry: 2400,
+      secondCountry: 1000,
     },
     {
       year: 1970,
-      value: 1398,
+      firstCountry: 1398,
+      secondCountry: 2400,
     },
     {
       year: 1980,
-      value: 9800,
+      firstCountry: 9800,
+      secondCountry: 5000,
     },
     {
       year: 1990,
-      value: 3908,
+      firstCountry: 3908,
+      secondCountry: 8000,
     },
     {
       year: 2000,
-      value: 4800,
+      firstCountry: 4800,
+      secondCountry: 2400,
     },
     {
       year: 2010,
-      value: 3800,
+      firstCountry: 3800,
+      secondCountry: 4800,
     },
     {
       year: 2020,
-      value: 4300,
+      firstCountry: 4300,
+      secondCountry: 6700,
     },
   ];
 
@@ -65,8 +72,11 @@ export default function OneCountryOneIndicator(props) {
       </header>
       <div className="mb-4 bg-light rounded-3">
         <Container className="py-5">
-          <h2>{props.country}</h2>
+          <h2 className="align-items-center">
+            {props.firstCountry}, {props.secondCountry}
+          </h2>
           <h4>{props.indicator}</h4>
+          <br />
           <LineChart
             width={1150}
             height={400}
@@ -86,10 +96,11 @@ export default function OneCountryOneIndicator(props) {
             <Tooltip />
             <Line
               type="monotone"
-              dataKey="value"
+              dataKey="firstCountry"
               stroke="#8884d8"
               activeDot={{ r: 8 }}
             />
+            <Line type="monotone" dataKey="secondCountry" stroke="#82ca9d" />
           </LineChart>
         </Container>
       </div>

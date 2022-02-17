@@ -7,6 +7,47 @@ import Logo from "../assets/bank-logo.png";
 
 export default function OneCountryOneIndicatorOneYear(props) {
   const network = new Network();
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    (async () => {
+      setData(
+        await network.getCountryIndicatorYearInfo(
+          props.country,
+          props.indicator,
+          props.year
+        )
+      );
+      console.log(
+        await network.getCountryIndicatorYearInfo(
+          props.country,
+          props.indicator,
+          props.year
+        )
+      );
+    })();
+  }, []);
+
+  function checkResponse() {
+    if ("response" in data) {
+      return (
+        <p>Please choose a different country and indicator combination.</p>
+      );
+    } else {
+      return (
+        <Container className="py-5">
+          <h2>
+            {props.country}, {props.year}
+          </h2>
+          <div>
+            <h4>
+              {props.indicator}: {data[0].Value}
+            </h4>
+          </div>
+        </Container>
+      );
+    }
+  }
 
   return (
     <Container className="py-4">
@@ -25,14 +66,7 @@ export default function OneCountryOneIndicatorOneYear(props) {
         </Navbar>
       </header>
       <div className="mb-4 bg-light rounded-3">
-        <Container className="py-5">
-          <h2>{props.country}</h2>
-          <div>
-            <h4>
-              {props.indicator}: {props.value}
-            </h4>
-          </div>
-        </Container>
+        {data ? checkResponse() : <p>loading</p>}
       </div>
       <Container>
         <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">

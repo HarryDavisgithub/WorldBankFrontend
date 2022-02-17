@@ -7,6 +7,7 @@ import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import OneCountryOneIndicator from "./components/OneCountryOneIndicator";
 import OneCountryOneIndicatorOneYear from "./components/OneCountryOneIndicatorOneYear";
+import TwoCountriesOneIndicator from "./components/TwoCountriesOneIndicator";
 
 function App() {
   const [cookies, setCookie] = useCookies(["sessionId"]);
@@ -41,34 +42,39 @@ function App() {
   }
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          !isLoggedIn ? (
-            <MainPage setIsLoggedIn={setIsLoggedIn} />
-          ) : (
-            <>
-              <Navigate replace to="/search" />
-            </>
-          )
-        }
-      />
-      <Route
-        path="/search"
-        element={
-          isLoggedIn ? (
-            <Search
-              getSelectedCountries={getSelectedCountries}
-              getSelectedIndicators={getSelectedIndicators}
-              getSelectedYear={getSelectedYear}
-            />
-          ) : (
-            <Navigate replace to="/" />
-          )
-        }
-      />
-    </Routes>
+    <OneCountryOneIndicatorOneYear
+      country={"Afghanistan"}
+      indicator={"Debt service on external debt, long-term (TDS, current US$)"}
+      year={2005}
+    />
+    // <Routes>
+    //   <Route
+    //     path="/"
+    //     element={
+    //       !isLoggedIn ? (
+    //         <MainPage setIsLoggedIn={setIsLoggedIn} />
+    //       ) : (
+    //         <>
+    //           <Navigate replace to="/search" />
+    //         </>
+    //       )
+    //     }
+    //   />
+    //   <Route
+    //     path="/search"
+    //     element={
+    //       isLoggedIn ? (
+    //         <Search
+    //           getSelectedCountries={getSelectedCountries}
+    //           getSelectedIndicators={getSelectedIndicators}
+    //           getSelectedYear={getSelectedYear}
+    //         />
+    //       ) : (
+    //         <Navigate replace to="/" />
+    //       )
+    //     }
+    //   />
+    // </Routes>
   );
 }
 
