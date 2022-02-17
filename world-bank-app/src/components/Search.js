@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Container, Navbar } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+
 import Network from "../Network.js";
 import Logo from "../assets/bank-logo.png";
 
