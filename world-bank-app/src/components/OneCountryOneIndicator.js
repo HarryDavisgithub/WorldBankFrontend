@@ -16,13 +16,38 @@ export default function OneCountryOneIndicator(props) {
 		})();
 	}, []);
 
-	// 	{
-	// 		year: 1960,
-	// 		value: 2400,
-	// 	},
-	// 	{
-	// 		year: 1970,
-	// 		value: 1398,
+	function getGraph() {
+		if ("response" in data) {
+			return <p>Please choose a different country and indicator combination</p>;
+		} else {
+			return (
+				<Container className="py-5">
+					{console.log(data)}
+					<h2>{props.country}</h2>
+					<h4>{props.indicator}</h4>
+					<LineChart
+						width={1150}
+						height={400}
+						data={data}
+						margin={{
+							top: 5,
+							right: 0,
+							left: 0,
+							bottom: 25,
+						}}
+					>
+						<CartesianGrid strokeDasharray="3 3" />
+						<XAxis dataKey="Year">
+							<Label value="Year" position="insideBottom" offset={-20} />
+						</XAxis>{" "}
+						<YAxis />
+						<Tooltip />
+						<Line type="monotone" dataKey="Value" stroke="#8884d8" activeDot={{ r: 8 }} />
+					</LineChart>
+				</Container>
+			);
+		}
+	}
 
 	return (
 		<Container className="py-4">
@@ -40,36 +65,7 @@ export default function OneCountryOneIndicator(props) {
 					</Button>
 				</Navbar>
 			</header>
-			<div className="mb-4 bg-light rounded-3">
-				{data ? (
-					<Container className="py-5">
-						{console.log(data)}
-						<h2>{props.country}</h2>
-						<h4>{props.indicator}</h4>
-						<LineChart
-							width={1150}
-							height={400}
-							data={data}
-							margin={{
-								top: 5,
-								right: 0,
-								left: 0,
-								bottom: 25,
-							}}
-						>
-							<CartesianGrid strokeDasharray="3 3" />
-							<XAxis dataKey="Year">
-								<Label value="Year" position="insideBottom" offset={-20} />
-							</XAxis>{" "}
-							<YAxis />
-							<Tooltip />
-							<Line type="monotone" dataKey="Value" stroke="#8884d8" activeDot={{ r: 8 }} />
-						</LineChart>
-					</Container>
-				) : (
-					<p>Loading...</p>
-				)}
-			</div>
+			<div className="mb-4 bg-light rounded-3">{data ? getGraph() : <p>Loading...</p>}</div>
 			<Container>
 				<footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
 					<p className="col-md-4 mb-0 text-muted">© 2022 Team Delta</p>
