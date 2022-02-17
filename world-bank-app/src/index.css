@@ -10,32 +10,9 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.custom-year-range-picker {
-	border: 0 !important;
-	color: black;
-}
-.custom-year-range-picker .yrp-picker-box {
-	height: 40px;
-	width: 200px;
-	border-radius: 5px;
-	background-color: white;
-	color: black;
-	position: absolute;
-}
-
-.custom-year-range-picker .yrp-picker-box span {
-	color: black;
-
-	font-size: medium;
-}
-
-.custom-year-range-picker .yrp-picker-box i {
-	border-color: gray;
-}
-
 .selection-bar {
-	padding-left: 10%;
-	padding-right: 10%;
+	/* padding-left: 10%;
+	padding-right: 10%; */
 	height: 85px;
 	width: 100%;
 	display: flex;
@@ -48,14 +25,15 @@ code {
 }
 
 .search-button {
-	align-self: flex-end;
-}
-
-.year-range-container {
-	width: 200px;
 	height: 40px;
+	align-self: center;
 }
 
-/* .ant-select-selection-selected-value {
-  width: 100%;
-} */
+.search-select {
+	flex-direction: column;
+	min-width: "50%";
+}
+
+.search-item {
+	min-width: 150px;
+}
