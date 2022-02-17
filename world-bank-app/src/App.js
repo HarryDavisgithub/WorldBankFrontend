@@ -6,6 +6,7 @@ import { useCookies } from "react-cookie";
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import OneCountryOneIndicator from "./components/OneCountryOneIndicator";
+import PageSelector from "./components/PageSelector";
 
 function App() {
 	const [cookies, setCookie] = useCookies(["sessionId"]);
@@ -26,17 +27,17 @@ function App() {
 
 	function getSelectedCountries(countries) {
 		setSelectedCountries(countries);
-		console.log(countries);
+		// console.log(countries);
 	}
 
 	function getSelectedIndicators(indicator) {
 		setSelectedIndicator(indicator);
-		console.log(indicator);
+		// console.log(indicator);
 	}
 
 	function getSelectedYear(year) {
 		setSelectedYear(year);
-		console.log(year);
+		// console.log(year);
 	}
 
 	return (
@@ -54,14 +55,37 @@ function App() {
 				}
 			/>
 			<Route
+				path="/page-selection"
+				element={
+					<PageSelector
+						country={selectedCountries}
+						indicator={selectedIndicator}
+						year={selectedYear}
+					/>
+				}
+			/>
+			<Route
 				path="/search"
 				element={
 					isLoggedIn ? (
-						<Search
-							getSelectedCountries={getSelectedCountries}
-							getSelectedIndicators={getSelectedIndicators}
-							getSelectedYear={getSelectedYear}
-						/>
+						<>
+							<button onClick={deleteCookiesOnLogOut}>Delete</button>
+							<Search
+								getSelectedCountries={getSelectedCountries}
+								getSelectedIndicators={getSelectedIndicators}
+								getSelectedYear={getSelectedYear}
+							/>
+						</>
+					) : (
+						<Navigate replace to="/" />
+					)
+				}
+			/>
+			<Route
+				path="/OneCountryOneIndicator"
+				element={
+					isLoggedIn ? (
+						<OneCountryOneIndicator country={"Albania"} indicator={"Indicator"} />
 					) : (
 						<Navigate replace to="/" />
 					)
