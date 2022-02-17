@@ -40,6 +40,7 @@ export default function MainPage(props) {
             show={showLogIn}
             handleClose={handleShowLogIn}
             postLogin={Network.postLogin}
+            setIsLoggedIn={props.setIsLoggedIn}
           />
         </Navbar>
       </header>
