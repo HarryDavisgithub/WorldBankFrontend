@@ -57,7 +57,7 @@ function App() {
 				path="/page-selection"
 				element={
 					<PageSelector
-						country={selectedCountries}
+						countries={selectedCountries}
 						indicator={selectedIndicator}
 						year={selectedYear}
 					/>
