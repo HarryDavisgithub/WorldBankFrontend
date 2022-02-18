@@ -57,7 +57,11 @@ export default function TwoCountriesOneIndicatorOneYear(props) {
               <Button variant="primary">History</Button>
             </Navbar.Brand>
           </Container>
-          <Button variant="primary" className="text-nowrap">
+          <Button
+            variant="primary"
+            className="text-nowrap"
+            onClick={props.logOut}
+          >
             Log Out
           </Button>
         </Navbar>
