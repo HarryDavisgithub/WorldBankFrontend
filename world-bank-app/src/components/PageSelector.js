@@ -4,6 +4,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import OneCountryOneIndicator from "./OneCountryOneIndicator";
 import OneCountryOneIndicatorOneYear from "./OneCountryOneIndicatorOneYear";
 import TwoCountriesOneIndicator from "./TwoCountriesOneIndicator";
+import TwoCountriesOneIndicatorOneYear from "./TwoCountriesOneIndicatorOneYear";
+
 
 function PageSelector(props) {
 	function selectPage() {
@@ -14,7 +16,7 @@ function PageSelector(props) {
 			props.indicator !== "All" &&
 			props.year === "All"
 		) {
-			return <OneCountryOneIndicator countries={props.country} indicator={props.indicator} />;
+			return <OneCountryOneIndicator country={props.countries} indicator={props.indicator} />;
 		} else if (
 			props.countries.length === 1 &&
 			props.indicator !== "All" &&
@@ -22,7 +24,7 @@ function PageSelector(props) {
 		) {
 			return (
 				<OneCountryOneIndicatorOneYear
-					countries={props.country}
+					country={props.countries}
 					indicator={props.indicator}
 					year={props.year}
 				/>
@@ -35,6 +37,27 @@ function PageSelector(props) {
 			return (
 				<TwoCountriesOneIndicator countries={props.countries} indicator={props.indicator} />
 			);
+		} else if (
+			props.countries.length === 2 &&
+			props.indicator !== "All" &&
+			props.year === "All"
+		) {
+			return (
+				<TwoCountriesOneIndicator countries={props.countries} indicator={props.indicator} />
+			);
+		} else if (
+			props.countries.length === 2 &&
+			props.indicator !== "All" &&
+			props.year !== "All"
+		) {
+			return (
+				<TwoCountriesOneIndicatorOneYear
+					countries={props.countries}
+					indicator={props.indicator}
+					year={props.year}
+				/>
+			);
+
 		}
 	}
 
