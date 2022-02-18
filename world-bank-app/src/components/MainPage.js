@@ -49,7 +49,7 @@ export default function MainPage(props) {
           <h1 className="display-5 fw-bold">Delta Stats Interface</h1>
           <p className="col-md-8 fs-4">
             Using a series of tools, this interface has been created to
-            visulaise the data from The World Bank database. Log in or sign up
+            visualise the data from The World Bank database. Log in or sign up
             to gain access.
           </p>
           <Button variant="primary" onClick={handleShowSignUp}>
