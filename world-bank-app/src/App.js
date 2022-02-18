@@ -44,62 +44,60 @@ function App() {
   }
 
   return (
-    <TwoCountriesOneIndicatorOneYear
-      countries={["Afghanistan", "Albania"]}
-      indicator={"Debt service on external debt, long-term (TDS, current US$)"}
-      year={2006}
-    />
-    // 	<Routes>
-    // 		<Route
-    // 			path="/"
-    // 			element={
-    // 				!isLoggedIn ? (
-    // 					<MainPage setIsLoggedIn={setIsLoggedIn} />
-    // 				) : (
-    // 					<>
-    // 						<Navigate replace to="/search" />
-    // 					</>
-    // 				)
-    // 			}
-    // 		/>
-    // 		<Route
-    // 			path="/page-selection"
-    // 			element={
-    // 				<PageSelector
-    // 					country={selectedCountries}
-    // 					indicator={selectedIndicator}
-    // 					year={selectedYear}
-    // 				/>
-    // 			}
-    // 		/>
-    // 		<Route
-    // 			path="/search"
-    // 			element={
-    // 				isLoggedIn ? (
-    // 					<>
-    // 						<button onClick={deleteCookiesOnLogOut}>Delete</button>
-    // 						<Search
-    // 							getSelectedCountries={getSelectedCountries}
-    // 							getSelectedIndicators={getSelectedIndicators}
-    // 							getSelectedYear={getSelectedYear}
-    // 						/>
-    // 					</>
-    // 				) : (
-    // 					<Navigate replace to="/" />
-    // 				)
-    // 			}
-    // 		/>
-    // 		<Route
-    // 			path="/OneCountryOneIndicator"
-    // 			element={
-    // 				isLoggedIn ? (
-    // 					<OneCountryOneIndicator country={"Albania"} indicator={"Indicator"} />
-    // 				) : (
-    // 					<Navigate replace to="/" />
-    // 				)
-    // 			}
-    // 		/>
-    // 	</Routes>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          !isLoggedIn ? (
+            <MainPage setIsLoggedIn={setIsLoggedIn} />
+          ) : (
+            <>
+              <Navigate replace to="/search" />
+            </>
+          )
+        }
+      />
+      <Route
+        path="/page-selection"
+        element={
+          <PageSelector
+            country={selectedCountries}
+            indicator={selectedIndicator}
+            year={selectedYear}
+          />
+        }
+      />
+      <Route
+        path="/search"
+        element={
+          isLoggedIn ? (
+            <>
+              <button onClick={deleteCookiesOnLogOut}>Delete</button>
+              <Search
+                getSelectedCountries={getSelectedCountries}
+                getSelectedIndicators={getSelectedIndicators}
+                getSelectedYear={getSelectedYear}
+              />
+            </>
+          ) : (
+            <Navigate replace to="/" />
+          )
+        }
+      />
+      <Route
+        path="/OneCountryOneIndicator"
+        element={
+          isLoggedIn ? (
+            <OneCountryOneIndicator
+              country={"Albania"}
+              indicator={"Indicator"}
+            />
+          ) : (
+            <Navigate replace to="/" />
+          )
+        }
+      />
+    </Routes>
   );
 }
 
