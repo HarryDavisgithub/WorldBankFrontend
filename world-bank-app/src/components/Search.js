@@ -16,7 +16,7 @@ export default function Search(props) {
   const [countries, setCountries] = useState();
   const [indicators, setIndicators] = useState();
   const [selectedCountries, setSelectedCountries] = useState([]);
-  const [selectedIndicator, setSelectedIndicator] = useState("All");
+  const [selectedIndicator, setSelectedIndicator] = useState([]);
   const [selectedYear, setSelectedYear] = useState("All");
 
   const { Option } = Select;
@@ -111,7 +111,6 @@ export default function Search(props) {
             option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
           }
         >
-          <Select.Option value="All">All</Select.Option>
           {createIndicatorList()}
         </Select>
       </div>
@@ -176,7 +175,9 @@ export default function Search(props) {
                   type="submit"
                   onClick={returnSelection}
                   className="bar-item search-button"
-                  disabled={!selectedCountries.length}
+                  disabled={
+                    !selectedCountries.length || !selectedIndicator.length
+                  }
                 >
                   Submit
                 </Button>
