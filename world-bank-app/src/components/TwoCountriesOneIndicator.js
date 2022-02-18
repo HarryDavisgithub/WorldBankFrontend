@@ -52,7 +52,7 @@ export default function TwoCountriesOneIndicator(props) {
   }
 
   function getGraph() {
-    if ("response" in data) {
+    if (data.length === 0) {
       return (
         <p>Please choose a different country and indicator combination.</p>
       );
@@ -71,7 +71,7 @@ export default function TwoCountriesOneIndicator(props) {
             margin={{
               top: 5,
               right: 0,
-              left: 50,
+              left: 75,
               bottom: 25,
             }}
           >
@@ -106,16 +106,17 @@ export default function TwoCountriesOneIndicator(props) {
           <Container>
             <Navbar.Brand href="/">
               <img src={Logo} height={50} alt="world-bank-logo" />{" "}
-              <Button variant="primary">Search</Button>{" "}
-              <Button variant="primary">History</Button>
             </Navbar.Brand>
           </Container>
           <Button
             variant="primary"
-            className="text-nowrap"
+            className="text-nowrap m-1"
             onClick={props.logOut}
           >
             Log Out
+          </Button>
+          <Button variant="primary" className="text-nowrap m-1" href="/">
+            Search
           </Button>
         </Navbar>
       </header>

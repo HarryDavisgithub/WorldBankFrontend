@@ -42,7 +42,7 @@ export default function OneCountryOneIndicator(props) {
             margin={{
               top: 5,
               right: 0,
-              left: 0,
+              left: 75,
               bottom: 25,
             }}
           >
@@ -71,16 +71,17 @@ export default function OneCountryOneIndicator(props) {
           <Container>
             <Navbar.Brand href="/">
               <img src={Logo} height={50} alt="world-bank-logo" />{" "}
-              <Button variant="primary">Search</Button>{" "}
-              <Button variant="primary">History</Button>
             </Navbar.Brand>
           </Container>
           <Button
             variant="primary"
-            className="text-nowrap"
+            className="text-nowrap m-1"
             onClick={props.logOut}
           >
             Log Out
+          </Button>
+          <Button variant="primary" className="text-nowrap m-1" href="/">
+            Search
           </Button>
         </Navbar>
       </header>
