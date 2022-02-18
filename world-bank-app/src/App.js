@@ -5,6 +5,7 @@ import MainPage from "./components/MainPage";
 import { useCookies } from "react-cookie";
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import OneCountry from "./components/OneCountry";
 import OneCountryOneIndicator from "./components/OneCountryOneIndicator";
 import OneCountryOneIndicatorOneYear from "./components/OneCountryOneIndicatorOneYear";
 import TwoCountriesOneIndicator from "./components/TwoCountriesOneIndicator";
