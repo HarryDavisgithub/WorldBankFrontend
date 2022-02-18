@@ -5,18 +5,36 @@ import OneCountryOneIndicator from "./OneCountryOneIndicator";
 import OneCountryOneIndicatorOneYear from "./OneCountryOneIndicatorOneYear";
 import TwoCountriesOneIndicator from "./TwoCountriesOneIndicator";
 
-
 function PageSelector(props) {
 	function selectPage() {
-		if (!props.country || !props.year || !props.indicator) {
+		if (!props.countries || !props.year || !props.indicator) {
 			return <Navigate replace to="/search" />;
-		} else if (props.country.length === 1 && props.indicator !== "All" && props.year === "All") {
-			return <OneCountryOneIndicator country={props.country} indicator={props.indicator} />;
-		} else if (props.country.length === 1 && props.indicator !== "All" && props.year !== "All") {
-			return <OneCountryOneIndicatorOneYear country={props.country} indicator={props.indicator} year={props.year}/>
-		} else if (props.country.length === 2 && props.indicator !== "All" && props.year === "All") {
-			return <TwoCountriesOneIndicator countries={props.countries} indicator={props.indicator} />;
-
+		} else if (
+			props.countries.length === 1 &&
+			props.indicator !== "All" &&
+			props.year === "All"
+		) {
+			return <OneCountryOneIndicator countries={props.country} indicator={props.indicator} />;
+		} else if (
+			props.countries.length === 1 &&
+			props.indicator !== "All" &&
+			props.year !== "All"
+		) {
+			return (
+				<OneCountryOneIndicatorOneYear
+					countries={props.country}
+					indicator={props.indicator}
+					year={props.year}
+				/>
+			);
+		} else if (
+			props.countries.length === 2 &&
+			props.indicator !== "All" &&
+			props.year === "All"
+		) {
+			return (
+				<TwoCountriesOneIndicator countries={props.countries} indicator={props.indicator} />
+			);
 		}
 	}
 
