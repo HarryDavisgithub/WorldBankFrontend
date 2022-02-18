@@ -20,10 +20,6 @@ function App() {
   const [selectedIndicator, setSelectedIndicator] = useState();
   const [selectedYear, setSelectedYear] = useState();
 
-  useEffect(() => {
-    console.log(isLoggedIn);
-  }, [cookies.sessionId, isLoggedIn]);
-
   const deleteCookiesOnLogOut = () => {
     setCookie("sessionId", "");
     setIsLoggedIn("");
@@ -42,61 +38,65 @@ function App() {
   }
 
   return (
-    <OneCountry country={"Afghanistan"} />
-    // <Routes>
-    //   <Route
-    //     path="/"
-    //     element={
-    //       !isLoggedIn ? (
-    //         <MainPage setIsLoggedIn={setIsLoggedIn} />
-    //       ) : (
-    //         <>
-    //           <Navigate replace to="/search" />
-    //         </>
-    //       )
-    //     }
-    //   />
-    //   <Route
-    //     path="/page-selection"
-    //     element={
-    //       <PageSelector
-    //         country={selectedCountries}
-    //         indicator={selectedIndicator}
-    //         year={selectedYear}
-    //       />
-    //     }
-    //   />
-    //   <Route
-    //     path="/search"
-    //     element={
-    //       isLoggedIn ? (
-    //         <>
-    //           <button onClick={deleteCookiesOnLogOut}>Delete</button>
-    //           <Search
-    //             getSelectedCountries={getSelectedCountries}
-    //             getSelectedIndicators={getSelectedIndicators}
-    //             getSelectedYear={getSelectedYear}
-    //           />
-    //         </>
-    //       ) : (
-    //         <Navigate replace to="/" />
-    //       )
-    //     }
-    //   />
-    //   <Route
-    //     path="/OneCountryOneIndicator"
-    //     element={
-    //       isLoggedIn ? (
-    //         <OneCountryOneIndicator
-    //           country={"Albania"}
-    //           indicator={"Indicator"}
-    //         />
-    //       ) : (
-    //         <Navigate replace to="/" />
-    //       )
-    //     }
-    //   />
-    // </Routes>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          !isLoggedIn ? (
+            <MainPage setIsLoggedIn={setIsLoggedIn} />
+          ) : (
+            <>
+              <Navigate replace to="/search" />
+            </>
+          )
+        }
+      />
+      <Route
+        path="/page-selection"
+        element={
+          isLoggedIn ? (
+            <PageSelector
+              countries={selectedCountries}
+              indicator={selectedIndicator}
+              year={selectedYear}
+              logOut={deleteCookiesOnLogOut}
+            />
+          ) : (
+            <Navigate replace to="/" />
+          )
+        }
+      />
+      <Route
+        path="/search"
+        element={
+          isLoggedIn ? (
+            <>
+              <Search
+                getSelectedCountries={getSelectedCountries}
+                getSelectedIndicators={getSelectedIndicators}
+                getSelectedYear={getSelectedYear}
+                logOut={deleteCookiesOnLogOut}
+              />
+            </>
+          ) : (
+            <Navigate replace to="/" />
+          )
+        }
+      />
+      <Route
+        path="/OneCountryOneIndicator"
+        element={
+          isLoggedIn ? (
+            <OneCountryOneIndicator
+              country={"Albania"}
+              indicator={"Indicator"}
+            />
+          ) : (
+            <Navigate replace to="/" />
+          )
+        }
+      />
+    </Routes>
   );
 }
 
