@@ -8,6 +8,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import OneCountryOneIndicator from "./components/OneCountryOneIndicator";
 import OneCountryOneIndicatorOneYear from "./components/OneCountryOneIndicatorOneYear";
 import TwoCountriesOneIndicator from "./components/TwoCountriesOneIndicator";
+import TwoCountriesOneIndicatorOneYear from "./components/TwoCountriesOneIndicatorOneYear";
 import PageSelector from "./components/PageSelector";
 
 function App() {
@@ -43,9 +44,10 @@ function App() {
   }
 
   return (
-    <TwoCountriesOneIndicator
+    <TwoCountriesOneIndicatorOneYear
       countries={["Afghanistan", "Albania"]}
       indicator={"Debt service on external debt, long-term (TDS, current US$)"}
+      year={2006}
     />
     // 	<Routes>
     // 		<Route
