@@ -30,6 +30,25 @@ export default class Networking {
     return await response.json();
   }
 
+  async getTwoCountriesIndicatorInfo(firstCountry, secondCountry, indicator) {
+    const response = await fetch(
+      `http://localhost:8080/compare/${firstCountry}/${secondCountry}/${indicator}/info`
+    );
+    return await response.json();
+  }
+
+  async getTwoCountriesIndicatorYearInfo(
+    firstCountry,
+    secondCountry,
+    indicator,
+    year
+  ) {
+    const response = await fetch(
+      `http://localhost:8080/compare/${firstCountry}/${secondCountry}/${indicator}/${year}/info`
+    );
+    return await response.json();
+  }
+
   postSignup = async (email, password) => {
     let response = await fetch(`http://localhost:8080/users`, {
       method: "POST",
