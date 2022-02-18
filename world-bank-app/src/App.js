@@ -8,6 +8,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import OneCountryOneIndicator from "./components/OneCountryOneIndicator";
 import OneCountryOneIndicatorOneYear from "./components/OneCountryOneIndicatorOneYear";
 import TwoCountriesOneIndicator from "./components/TwoCountriesOneIndicator";
+import TwoCountriesOneIndicatorOneYear from "./components/TwoCountriesOneIndicatorOneYear";
 import PageSelector from "./components/PageSelector";
 
 function App() {
