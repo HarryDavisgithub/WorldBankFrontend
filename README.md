@@ -15,6 +15,7 @@ A user can create an account by selecting the create account button. Once create
 A user can select:
 
 - A single country and indicator
+  <img src='./imgs/1c1i.png'>
 - A single country, indicator and year
 - Two countries and an indicator
 - Two countries, an indicator and a year
@@ -27,6 +28,6 @@ When viewing results, the user has the option to input another search or to log 
 
 ## Team Delta:
 
-Project manager: Engineer Oliver Case-Green
-Systems architect: Engineer Harry Davis
-Quality assurance: Engineer Tamoor Waheed
+Project manager: Engineer Oliver Case-Green<br>
+Systems architect: Engineer Harry Davis<br>
+Quality assurance: Engineer Tamoor Waheed<br>
