@@ -6,6 +6,7 @@ import OneCountryOneIndicatorOneYear from "./OneCountryOneIndicatorOneYear";
 import TwoCountriesOneIndicator from "./TwoCountriesOneIndicator";
 import TwoCountriesOneIndicatorOneYear from "./TwoCountriesOneIndicatorOneYear";
 
+
 function PageSelector(props) {
 	function selectPage() {
 		if (!props.countries || !props.year || !props.indicator) {
@@ -56,6 +57,7 @@ function PageSelector(props) {
 					year={props.year}
 				/>
 			);
+
 		}
 	}
 
