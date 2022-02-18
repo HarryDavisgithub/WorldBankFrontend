@@ -17,10 +17,13 @@ A user can select:
 - A single country and indicator
   <img src='./imgs/1c1i.png'>
 - A single country, indicator and year
+  <img src='./imgs/1c1i1y.png'>
 - Two countries and an indicator
+  <img src='./imgs/2c1i.png'>
 - Two countries, an indicator and a year
+  <img src='./imgs/2c1i1y.png'>
 
-Where no year is specified, the user will be able to view the data for all years available as a graph.
+  Where no year is specified, the user will be able to view the data for all years available as a graph.
 
 ### Viewing results
 
