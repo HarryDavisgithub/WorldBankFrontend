@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useState, useEffect } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import React from "react";
+import { Navigate } from "react-router-dom";
 import OneCountryOneIndicator from "./OneCountryOneIndicator";
 import OneCountryOneIndicatorOneYear from "./OneCountryOneIndicatorOneYear";
 import TwoCountriesOneIndicator from "./TwoCountriesOneIndicator";
@@ -18,7 +18,6 @@ function PageSelector(props) {
     ) {
       return (
         <OneCountryOneIndicator
-
           country={props.countries}
           indicator={props.indicator}
           logOut={props.logOut}

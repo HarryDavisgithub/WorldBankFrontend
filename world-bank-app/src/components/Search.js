@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import { Routes, Route, Navigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import Network from "../Network.js";
 import Logo from "../assets/bank-logo.png";
