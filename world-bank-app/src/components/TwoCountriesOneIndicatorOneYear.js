@@ -23,7 +23,7 @@ export default function TwoCountriesOneIndicatorOneYear(props) {
   }, []);
 
   function checkResponse() {
-    if ("response" in data) {
+    if (data.length === 0) {
       return (
         <p>
           Please choose a different first country, second country or indicator

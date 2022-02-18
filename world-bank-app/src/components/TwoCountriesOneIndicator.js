@@ -52,7 +52,7 @@ export default function TwoCountriesOneIndicator(props) {
   }
 
   function getGraph() {
-    if ("response" in data) {
+    if (data.length === 0) {
       return (
         <p>Please choose a different country and indicator combination.</p>
       );
@@ -71,7 +71,7 @@ export default function TwoCountriesOneIndicator(props) {
             margin={{
               top: 5,
               right: 0,
-              left: 50,
+              left: 75,
               bottom: 25,
             }}
           >

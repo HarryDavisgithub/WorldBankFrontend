@@ -42,7 +42,7 @@ export default function OneCountryOneIndicator(props) {
             margin={{
               top: 5,
               right: 0,
-              left: 0,
+              left: 75,
               bottom: 25,
             }}
           >
